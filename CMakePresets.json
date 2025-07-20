@@ -1,0 +1,55 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 28,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "default-linux",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "build/${presetName}"
+        },
+        {
+            "name": "debug-linux",
+            "displayName": "Debug (Linux)",
+            "inherits": "default-linux",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release-linux",
+            "displayName": "Release (Linux)",
+            "inherits": "default-linux",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "asan-linux",
+            "displayName": "AddressSanitizer (Linux)",
+            "inherits": "default-linux",
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "-fsanitize=address -fno-omit-frame-pointer",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "configurePreset": "debug-linux",
+            "configuration": "Debug"
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "configurePreset": "release-linux",
+            "configuration": "Release"
+        }
+    ]
+}
