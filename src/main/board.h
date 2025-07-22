@@ -31,11 +31,11 @@ public:
     }
     void SetCell(CellValue new_value, uint32_t x, uint32_t y)
     {
-        m_Cells[y * m_Settings.Rows + x] = new_value;
+        m_Cells[y * m_Settings.Columns + x] = new_value;
     }
     CellValue GetCell(uint32_t x, uint32_t y)
     {
-        return m_Cells[y * m_Settings.Rows + x];
+        return m_Cells[y * m_Settings.Columns + x];
     }
 private:
     BoardSettings m_Settings;
