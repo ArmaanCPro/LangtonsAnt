@@ -1,5 +1,4 @@
-#include "main.h"
-#include "board.h"
+#include "ant.h"
 
 #include <raylib.h>
 
@@ -10,7 +9,7 @@ int main()
     const int scrWidth = brdSettings.CellSize * brdSettings.Columns;
     const int scrHeight = brdSettings.CellSize * brdSettings.Rows;
 
-    brd.SetCell(CellValue::Black, 25, 25);
+    Ant ant(25, 25);
 
     InitWindow(scrWidth, scrHeight, "Langton's Ant");
 
@@ -25,6 +24,8 @@ int main()
         {
             break;
         }
+
+        ant.Update(brd);
 
         ClearBackground(PURPLE);
 
@@ -45,10 +46,7 @@ int main()
                 case CellValue::Black:
                     c = BLACK;
                     break;
-                case CellValue::Ant:
-                    c = RED;
-                    break;
-                }
+               }
 
                 const uint32_t startX = i * brdSettings.CellSize;
                 const uint32_t startY = j * brdSettings.CellSize;

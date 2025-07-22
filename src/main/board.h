@@ -6,8 +6,7 @@
 enum CellValue
 {
     White,
-    Black,
-    Ant
+    Black
 };
 
 class Board
@@ -26,7 +25,7 @@ public:
         m_Cells.resize(m_Settings.Rows * m_Settings.Columns);
     }
 
-    BoardSettings GetBoardSettings() const
+    const BoardSettings& GetBoardSettings() const
     {
         return m_Settings;
     }
